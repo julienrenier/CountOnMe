@@ -9,26 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    // MARK: - Properties
-    let calc = Calc()
-
-    // MARK: - Outlets
-
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
-    //MARK: - Notification
+    // MARK: - Properties
+    let calc = Calc()
+    
+    //MARK: - Override
     
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showAlertController), name: Notification.Name(rawValue: "alertController"), object: nil)
-    }
-    
-    @objc
-    fileprivate func showAlertController(_ notification: Notification) {
-        if let alert = notification.object as? UIAlertController {
-            present(alert, animated: true, completion: nil)
-        }
+        calc.delegate = self
     }
 
     // MARK: - Action
@@ -79,5 +69,11 @@ class ViewController: UIViewController {
             text += stringNumber
         }
         textView.text = text
+    }
+}
+
+extension ViewController: CalcDelegate {
+    func showAlert(_ alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
     }
 }

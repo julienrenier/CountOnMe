@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol CalcDelegate {
+    func showAlert(_ alert: UIAlertController)
+}
+
 class Calc {
+    var delegate: CalcDelegate?
     
     var stringNumbers: [String] = [String()]
     var operators: [String] = ["+"]
@@ -26,7 +31,7 @@ class Calc {
                     alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
                     alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 }
-                NotificationCenter.default.post(name: .init("alertController"), object: alertVC)
+                delegate?.showAlert(alertVC)
                 return false
             }
         }
@@ -38,7 +43,7 @@ class Calc {
             if stringNumber.isEmpty {
                 let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert)
                 alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                NotificationCenter.default.post(name: .init("alertController"), object: alertVC)
+                delegate?.showAlert(alertVC)
                 return false
             }
         }
