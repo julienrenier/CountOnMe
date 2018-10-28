@@ -11,12 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
-    
+
     // MARK: - Properties
     let calc = Calc()
-    
-    //MARK: - Override
-    
+
+    // MARK: - Override
+
     override func viewDidLoad() {
         calc.delegate = self
     }
@@ -24,11 +24,9 @@ class ViewController: UIViewController {
     // MARK: - Action
 
     @IBAction func tappedNumberButton(_ sender: UIButton) {
-        for (i, numberButton) in numberButtons.enumerated() {
-            if sender == numberButton {
-                calc.addNewNumber(i)
-                updateDisplay()
-            }
+        for (index, numberButton) in numberButtons.enumerated() where numberButton == sender {
+            calc.addNewNumber(index)
+            updateDisplay()
         }
     }
 
@@ -55,15 +53,14 @@ class ViewController: UIViewController {
         }
     }
 
-
     // MARK: - Methods
 
     func updateDisplay() {
         var text = ""
-        for (i, stringNumber) in calc.stringNumbers.enumerated() {
+        for (index, stringNumber) in calc.stringNumbers.enumerated() {
             // Add operator
-            if i > 0 {
-                text += calc.operators[i]
+            if index > 0 {
+                text += calc.operators[index]
             }
             // Add number
             text += stringNumber
