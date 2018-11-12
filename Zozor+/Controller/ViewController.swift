@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     @IBAction func plus() {
         addOperator("+")
     }
-    
+
     @IBAction func minus() {
         addOperator("-")
     }
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         }
         textView.text = text
     }
-    
+
     fileprivate func addOperator(_ newOperator: String) {
         if calc.canAddOperator {
             calc.operators.append(newOperator)
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             updateDisplay()
         }
     }
-    
+
 }
 
 extension ViewController: CalcDelegate {

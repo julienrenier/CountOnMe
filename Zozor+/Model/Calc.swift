@@ -59,21 +59,22 @@ class Calc {
     }
 
     func calculateTotal() -> String? {
-        if !isExpressionCorrect {
+        guard isExpressionCorrect else {
             return nil
         }
-
+    
         var total = 0
         for (index, stringNumber) in stringNumbers.enumerated() {
-            if let number = Int(stringNumber) {
-                if operators[index] == "+" {
-                    total += number
-                } else if operators[index] == "-" {
-                    total -= number
-                }
+            guard let number = Int(stringNumber) else {
+                return nil
+            }
+            if operators[index] == "+" {
+                total += number
+            } else if operators[index] == "-" {
+                total -= number
             }
         }
-
+    
         return ("=\(total)")
     }
 
