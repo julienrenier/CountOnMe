@@ -1,5 +1,5 @@
 os: osx
-language: objective-c
+language: swift
 osx_image: xcode10.1
 xcode_project: CountOnMe.xcodeproj
 xcode_scheme: CountOnMe
