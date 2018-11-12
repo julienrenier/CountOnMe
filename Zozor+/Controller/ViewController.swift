@@ -31,19 +31,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func plus() {
-        if calc.canAddOperator {
-        	calc.operators.append("+")
-        	calc.stringNumbers.append("")
-            updateDisplay()
-        }
+        addOperator("+")
     }
-
+    
     @IBAction func minus() {
-        if calc.canAddOperator {
-            calc.operators.append("-")
-            calc.stringNumbers.append("")
-            updateDisplay()
-        }
+        addOperator("-")
     }
 
     @IBAction func equal() {
@@ -55,7 +47,7 @@ class ViewController: UIViewController {
 
     // MARK: - Methods
 
-    func updateDisplay() {
+    fileprivate func updateDisplay() {
         var text = ""
         for (index, stringNumber) in calc.stringNumbers.enumerated() {
             // Add operator
@@ -67,6 +59,15 @@ class ViewController: UIViewController {
         }
         textView.text = text
     }
+    
+    fileprivate func addOperator(_ newOperator: String) {
+        if calc.canAddOperator {
+            calc.operators.append(newOperator)
+            calc.stringNumbers.append("")
+            updateDisplay()
+        }
+    }
+    
 }
 
 extension ViewController: CalcDelegate {
