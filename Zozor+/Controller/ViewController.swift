@@ -71,6 +71,6 @@ class ViewController: UIViewController {
 
 extension ViewController: CalcDelegate {
     func showAlert(_ alert: UIAlertController) {
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
 }

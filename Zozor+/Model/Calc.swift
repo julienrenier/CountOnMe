@@ -20,20 +20,13 @@ class Calc {
     var index = 0
 
     var isExpressionCorrect: Bool {
-        let alertVC: UIAlertController
-
         if let stringNumber = stringNumbers.last {
             if stringNumber.isEmpty {
                 if stringNumbers.count == 1 {
-                    alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !",
-                                                preferredStyle: .alert)
-                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    showAlertController(message: "Démarrez un nouveau calcul !", button: "Ok")
                 } else {
-                    alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !",
-                                                preferredStyle: .alert)
-                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    showAlertController(message: "Entrez une expression correcte !", button: "Ok")
                 }
-                delegate?.showAlert(alertVC)
                 return false
             }
         }
@@ -43,14 +36,18 @@ class Calc {
     var canAddOperator: Bool {
         if let stringNumber = stringNumbers.last {
             if stringNumber.isEmpty {
-                let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte !",
-                                                preferredStyle: .alert)
-                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                delegate?.showAlert(alertVC)
+                showAlertController(message: "Expression incorrecte !", button: "Ok")
                 return false
             }
         }
         return true
+    }
+
+    private func showAlertController(message: String, button: String) {
+        let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !",
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        delegate?.showAlert(alertVC)
     }
 
     func addNewNumber(_ newNumber: Int) {
