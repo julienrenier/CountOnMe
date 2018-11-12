@@ -20,15 +20,17 @@ class Calc {
     var index = 0
 
     var isExpressionCorrect: Bool {
-        if let stringNumber = stringNumbers.last {
-            if stringNumber.isEmpty {
-                if stringNumbers.count == 1 {
-                    showAlertController(message: "Démarrez un nouveau calcul !", button: "Ok")
-                } else {
-                    showAlertController(message: "Entrez une expression correcte !", button: "Ok")
-                }
-                return false
+        guard let stringNumber = stringNumbers.last else {
+            return false
+        }
+
+        if stringNumber.isEmpty {
+            if stringNumbers.count == 1 {
+                showAlertController(message: "Démarrez un nouveau calcul !", button: "Ok")
+            } else {
+                showAlertController(message: "Entrez une expression correcte !", button: "Ok")
             }
+            return false
         }
         return true
     }
@@ -68,6 +70,7 @@ class Calc {
             guard let number = Int(stringNumber) else {
                 return nil
             }
+
             if operators[index] == "+" {
                 total += number
             } else if operators[index] == "-" {

@@ -14,7 +14,13 @@ class CalcTests: XCTestCase {
     let calc = Calc()
 
     func testGivenNil_WillEvaluateExpression_ThenExpressionIsFalse() {
+        calc.stringNumbers = []
         XCTAssertFalse(calc.isExpressionCorrect)
+    }
+
+    func testGivenString_WillEvaluateExpression_ThenExpressionIsFalse() {
+        calc.stringNumbers = ["a", "b"]
+        XCTAssertNil(calc.calculateTotal())
     }
 
     func testGivenTrueExpression_WillEvaluateExpression_ThenExpressionIsTrue() {
