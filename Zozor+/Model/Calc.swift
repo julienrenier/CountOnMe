@@ -62,7 +62,7 @@ class Calc {
         guard isExpressionCorrect else {
             return nil
         }
-    
+
         var total = 0
         for (index, stringNumber) in stringNumbers.enumerated() {
             guard let number = Int(stringNumber) else {
@@ -74,7 +74,7 @@ class Calc {
                 total -= number
             }
         }
-    
+
         return ("=\(total)")
     }
 
