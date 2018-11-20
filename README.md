@@ -5,3 +5,11 @@ Students are supposed to clone or fork the repo and improve it. Their focus shou
 - MVC compliance
 - Tests
 - Bonus feature
+
+### Bonus feature
+- Travis CI
+> Add a continuous integration system to perform builds and tests on the project before merging pulls requests on branch master.
+- Codecov
+> Codecov compare coverage reports.
+- Codebeat
+> Help to dissolve technical debt. It's helping to keep a clean code with evaluating each code issue of the project.
